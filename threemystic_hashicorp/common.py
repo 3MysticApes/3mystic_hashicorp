@@ -1,13 +1,19 @@
-from threemystic_hashicorp.base_class.base_common import base
+from threemystic_common.base_class.base import base
 
 
-class hashi_common(base): 
+class common(base): 
   """This is a common set of methods and libraries"""
 
   def __init__(self, *args, **kwargs) -> None:
     super().__init__(logger_name= f"hashi", *args, **kwargs)
   
-  
+  def version(self):
+    if hasattr(self, "_version"):
+      return self._version
+    import threemystic_hashicorp.__version__ as __version__
+    self._version = __version__.__version__
+    return self.version()
+
   def vault(self, unset = False, *args, **kwargs):
     if(unset):
       self._unset("_hashi_vault")
