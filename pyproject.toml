@@ -1,0 +1,144 @@
+# reference can be found 
+# https://github.com/pypa/hatch/blob/master/pyproject.toml
+
+[build-system]
+requires = ["hatchling>=1.11.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "threemystic-common"
+description = "Common Library for for various tool sets"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [
+  { name="Ron Truex" },
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Natural Language :: English",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "colorama; platform_system == 'Windows'",
+  "asyncio >= 3.4.3",
+  "python-dateutil >= 2.8.2",
+  "openpyxl >= 3.0.9",
+  "pycryptodomex >= 3.14.1",
+  "requests >= 2.27.1",
+  "boto3 >= 1.21.41",
+  "hvac >= 1.0.2",
+  "pyhcl >= 0.4.4",
+]
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/3MysticApes/3mystic_common"
+"Bug Tracker" = "https://github.com/3MysticApes/3mystic_common/issues"
+
+[project.scripts]
+3mystic_common = "threemystic_hashicorp.cli:main"
+
+[tool.hatch.version]
+path = "threemystic_hashicorp/__version__.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/docs",
+  "/scripts",
+]
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+target-version = ["py37"]
+
+[tool.ruff]
+target-version = "py38"
+line-length = 120
+select = [
+  "A",
+  "B",
+  "C",
+  "DTZ",
+  "E",
+  "EM",
+  "F",
+  "FBT",
+  "I",
+  "ICN",
+  "ISC",
+  "N",
+  "PLC",
+  "PLE",
+  "PLR",
+  "PLW",
+  "Q",
+  "RUF",
+  "S",
+  "SIM",
+  "T",
+  "TID",
+  "UP",
+  "W",
+  "YTT",
+]
+ignore = [
+  # Allow non-abstract empty methods in abstract base classes
+  "B027",
+  # Ignore McCabe complexity
+  "C901",
+  # Allow boolean positional values in function calls, like `dict.get(... True)`
+  "FBT003",
+  # Ignore checks for possible passwords
+  "S105", "S106", "S107",
+  # https://github.com/charliermarsh/ruff/issues/1949
+  "PLR2004",
+]
+unfixable = [
+  # Don't touch unused imports
+  "F401",
+]
+
+[tool.ruff.isort]
+known-first-party = ["3mystic-common"]
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.per-file-ignores]
+# Tests can use assertions and relative imports
+"tests/**/*" = ["S101", "TID252"]
+
+[tool.mypy]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+follow_imports = "normal"
+ignore_missing_imports = true
+pretty = true
+show_column_numbers = true
+show_error_codes = true
+warn_no_return = false
+warn_unused_ignores = true
+
+[tool.coverage.run]
+branch = true
+source_pkgs = ["3mystic-common", "tests"]
+omit = [
+  "threemystic_hashicorp/__main__.py",
+]
+
+[tool.coverage.paths]
+3mystic_common = ["threemystic_hashicorp"]
+tests = ["tests", "*/threemystic_hashicorp/tests"]
+
