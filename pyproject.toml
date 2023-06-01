@@ -26,12 +26,8 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
-  "colorama; platform_system == 'Windows'",
-  "asyncio >= 3.4.3",
-  "python-dateutil >= 2.8.2",
-  "openpyxl >= 3.0.9",
-  "pycryptodomex >= 3.14.1",
-  "requests >= 2.27.1",
+  "colorama; platform_system == 'Windows'",  
+  "threemystic-common >= 0.0.3",
   "boto3 >= 1.21.41",
   "hvac >= 1.0.2",
   "pyhcl >= 0.4.4",
@@ -39,11 +35,11 @@ dependencies = [
 dynamic = ["version"]
 
 [project.urls]
-"Homepage" = "https://github.com/3MysticApes/3mystic_common"
-"Bug Tracker" = "https://github.com/3MysticApes/3mystic_common/issues"
+"Homepage" = "https://github.com/3MysticApes/3mystic_hashicorp"
+"Bug Tracker" = "https://github.com/3MysticApes/3mystic_hashicorp/issues"
 
 [project.scripts]
-3mystic_common = "threemystic_hashicorp.cli:main"
+3mystic_hashicorp = "threemystic_hashicorp.cli:main"
 
 [tool.hatch.version]
 path = "threemystic_hashicorp/__version__.py"
@@ -108,7 +104,7 @@ unfixable = [
 ]
 
 [tool.ruff.isort]
-known-first-party = ["3mystic-common"]
+known-first-party = ["3mystic-hashicorp"]
 
 [tool.ruff.flake8-quotes]
 inline-quotes = "single"
@@ -133,12 +129,12 @@ warn_unused_ignores = true
 
 [tool.coverage.run]
 branch = true
-source_pkgs = ["3mystic-common", "tests"]
+source_pkgs = ["3mystic-hashicorp", "tests"]
 omit = [
   "threemystic_hashicorp/__main__.py",
 ]
 
 [tool.coverage.paths]
-3mystic_common = ["threemystic_hashicorp"]
+3mystic_hashicorp = ["threemystic_hashicorp"]
 tests = ["tests", "*/threemystic_hashicorp/tests"]
 

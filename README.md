@@ -6,6 +6,9 @@ A set of common files that are used for interacting with hashicorp
 ## pip
 
 This project is currently designed to be installed via pip
+Currently the project is under development and is not in PyPI. 
+So you need to install the following packages
+pip install https://github.com/3MysticApes/3mystic_cloud_client
 pip install https://github.com/3MysticApes/3mystic_hashicorp
 
 Once installed you will get the following command:
