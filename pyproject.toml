@@ -38,8 +38,8 @@ dynamic = ["version"]
 "Homepage" = "https://github.com/3MysticApes/3mystic_hashicorp"
 "Bug Tracker" = "https://github.com/3MysticApes/3mystic_hashicorp/issues"
 
-[project.scripts]
-3mystic_hashicorp = "threemystic_hashicorp.cli:main"
+# [project.scripts]
+# 3mystic_hashicorp = "threemystic_hashicorp.cli:main"
 
 [tool.hatch.version]
 path = "threemystic_hashicorp/__version__.py"
